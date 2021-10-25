@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Zeyada&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- Navigation bar on all pages -->
+    <nav class="nav-bar">
+        <div class="left">
+            <a href="index.html"><img id="logo" src="assets/logo.png" alt="logo"></a>
+            <span>Deliver to: 300 South Craig Street <a href="#" id="edit"><i class="fa fa-pencil"></i></a></span>
+        </div>
+        <div class="right">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html" class="cart-wrapper">
+                <span id="cart" class="fa-stack fa-lg">
+                <i class="fa fa-shopping-cart fa-stack-2x"></i>
+                <strong id = "cart-numitems" class="fa fa-stack-1x">0</strong>
+                </span>
+            </a>
+        </div>
+    </nav>
+    <!-- Cart page body content -->
+    <div class="cart-header">
+        <h1>Cart</h1>
+    </div>
+
+    <div class="cart-wrapper">
+        <div class="cart-msg">
+            <p>Oh no! Cart is empty :(</p>
+        </div>
+
+        <div class="cart-total">
+            <p>Total: <span>$0</span></p>
+        </div>
+
+        <div class="cart-bottom">
+            <a href="products.html"><button id = "keep-shopping-btn">Keep Shopping</button></a>
+            <button id="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

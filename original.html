@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Zeyada&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <title>Original</title>
+</head>
+
+<body>
+    <!-- Navigation bar on all pages -->
+    <nav class="nav-bar">
+        <div class="left">
+            <a href="index.html"><img id="logo" src="assets/logo.png" alt="logo"></a>
+            <span>Deliver to: 300 South Craig Street <a href="#" id="edit"><i class="fa fa-pencil"></i></a></span>
+        </div>
+        <div class="right">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html" class="cart-wrapper">
+                <span id="cart" class="fa-stack fa-lg">
+                <i class="fa fa-shopping-cart fa-stack-2x"></i>
+                <strong id = "cart-numitems" class="fa fa-stack-1x">0</strong>
+                </span>
+            </a>
+        </div>
+    </nav>
+    <!-- Product Descriptions -->
+    <div class="details-container">
+        <img src="assets/original.jpeg" alt="original">
+        <div class="details-info">
+            <a href="products.html" id="back"><i class="fa fa-arrow-left"></i> Back</a>
+            <h1>Original</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus arcu consequat elit auctor vitae faucibus et ac sed. Dignissim iaculis at nunc tincidunt tristique
+            </p>
+            <div class="dropdowns">
+                <label for="qty-select">Qty:</label>
+                <select name="qty" id="qty-select" onchange="changePrice()">
+                    <option value=1>1 pc</option>
+                    <option value=3>3 pcs</option>
+                    <option value=6>6 pcs</option>
+                    <option value=12>12 pcs</option>
+                </select>
+                <label for="glaze-select">Glaze:</label>
+                <select name="glaze" id="glaze-select">
+                    <option value="None">None</option>
+                    <option value="Sugar-milk">Sugar-milk</option>
+                    <option value="Vanilla-milk">Vanilla-milk</option>
+                    <option value="Double-chocolate">Double-chocolate</option>
+                </select>
+            </div>
+            <button onclick="update_cart()">Add to Cart <span id="price"></span></button>
+        </div>
+    </div>
+</body>
+
+</html>
