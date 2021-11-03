@@ -16,12 +16,9 @@ const cart = [];
 
 function addToCart(productName, productGlaze, productQty, productPrice) {
     const product = new Product(productName, productGlaze, productQty, productPrice);
-    // console.log(product)
-
     cart.push(product);
     console.log("cart:", cart)
     localStorage.setItem('savedCart', JSON.stringify(cart));
-    // showProductInCart(product);
 }
 
 document.getElementById("cartButton").addEventListener('click', function() {
@@ -31,7 +28,6 @@ document.getElementById("cartButton").addEventListener('click', function() {
     document.getElementById("cart-numitems").innerHTML = curQty + newQty;
 
     // Adding item to cart
-    // productName = document.getElementById("produt-title").innerText;
     glaze = document.getElementById("glaze-select").value;
     qty = parseInt(document.getElementById("qty-select").value)
     price = parseInt(document.getElementById("product-price").innerHTML)
