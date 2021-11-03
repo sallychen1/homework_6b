@@ -267,6 +267,31 @@ h1 {
     padding: 2em;
 }
 
+.cart-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.6em;
+}
+
+.cart-row img {
+    width: 30%;
+}
+
+.cart-row-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-row-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .cart-total {
     color: black;
     font-size: 0.6em;

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Zeyada&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
     <title>Original</title>
 </head>
 
@@ -36,7 +35,7 @@
         <img src="assets/original.jpeg" alt="original">
         <div class="details-info">
             <a href="products.html" id="back"><i class="fa fa-arrow-left"></i> Back</a>
-            <h1>Original</h1>
+            <h1 id="product-title">Original</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus arcu consequat elit auctor vitae faucibus et ac sed. Dignissim iaculis at nunc tincidunt tristique
             </p>
             <div class="dropdowns">
@@ -55,9 +54,11 @@
                     <option value="Double-chocolate">Double-chocolate</option>
                 </select>
             </div>
-            <button onclick="update_cart()">Add to Cart <span id="price"></span></button>
+            <button id="cartButton">Add to Cart <span>$</span><span id="product-price">4.99</span></button>
         </div>
     </div>
 </body>
+<script src="app.js"></script>
+<!-- <script src="cart.js"></script> -->
 
 </html>
