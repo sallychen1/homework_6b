@@ -1,9 +1,3 @@
-// Updating the price based on number of items selected
-function changePrice() {
-    let newPrice = document.getElementById("qty-select").value * 4.99;
-    document.getElementById("product-price").innerHTML = newPrice;
-}
-
 // New Product Object
 function Product(productName, productGlaze, productQty, productPrice) {
     this.name = productName;
@@ -12,13 +6,20 @@ function Product(productName, productGlaze, productQty, productPrice) {
     this.price = productPrice;
 }
 
-const cart = [];
+const storedValue = JSON.parse(localStorage.getItem('savedCart'));
+const cart = storedValue ? storedValue : [];
 
 function addToCart(productName, productGlaze, productQty, productPrice) {
     const product = new Product(productName, productGlaze, productQty, productPrice);
     cart.push(product);
     console.log("cart:", cart)
     localStorage.setItem('savedCart', JSON.stringify(cart));
+}
+
+// Updating the price based on number of items selected
+function changePrice() {
+    let newPrice = document.getElementById("qty-select").value * 4.99;
+    document.getElementById("product-price").innerHTML = newPrice;
 }
 
 document.getElementById("cartButton").addEventListener('click', function() {
@@ -29,10 +30,9 @@ document.getElementById("cartButton").addEventListener('click', function() {
 
     // Adding item to cart
     glaze = document.getElementById("glaze-select").value;
-    qty = parseInt(document.getElementById("qty-select").value)
-    price = parseInt(document.getElementById("product-price").innerHTML)
-
-    addToCart("Original", glaze, qty, price);
+    qty = parseInt(document.getElementById("qty-select").value);
+    price = parseFloat(document.getElementById("product-price").innerHTML);
+    addToCart('Original', glaze, qty, price);
 
     alert("Item Added to Cart!");
 })

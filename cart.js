@@ -1,41 +1,77 @@
-const storedValue = JSON.parse(localStorage.getItem('savedCart'));
-const newCart = storedValue ? storedValue : [];
+const currCart = JSON.parse(localStorage.getItem('savedCart'));
+const template = document.getElementById('cart-item-template');
+const cartDiv = document.querySelector('.cart-items');
 
-function showProductInCart(product) {
-    const template = document.getElementById('cart-item-template');
-    const clone = template.content.cloneNode(true);
+function showProductInCart() {
 
-    clone.querySelector('.cart-product-name').innerText = product.name;
-    clone.querySelector('.cart-product-qty').innerText = product.qty;
-    clone.querySelector('.cart-product-glaze').innerText = product.glaze;
-    clone.querySelector('.cart-product-price').innerText = product.price;
+    let totalPrice = 0.00;
+    for (let i = 0; i < currCart.length; i++) {
+        product = currCart[i];
+        const clone = template.content.cloneNode(true);
+        clone.querySelector('.cart-product-name').innerText = product.name;
+        clone.querySelector('.cart-product-qty').innerText = product.qty;
+        clone.querySelector('.cart-product-glaze').innerText = product.glaze;
+        clone.querySelector('.cart-product-price').innerText = product.price;
 
-    const removeBtn = clone.querySelector('.remove-btn');
-    removeBtn.addEventListener('click', function() {
-        // find and remove object from cart
-    });
+        const removeBtn = clone.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
 
-    const cartDiv = document.querySelector('.cart-items');
-    cartDiv.append(clone);
+            let itemContainer = this.parentNode.parentNode;
+
+            currCart.splice(0, 1);
+
+            itemContainer.parentNode.removeChild(itemContainer);
+            document.getElementById("cart-numitems").innerHTML = currCart.length;
+
+            // let totalPrice = 0.00;
+
+            // updateTotalPrice()
+
+            localStorage.setItem('savedCart', JSON.stringify(currCart));
+
+        });
+
+        // totalPrice += parseFloat(currCart[i].price);
+        // document.getElementById("cart-total-price").innerHTML = totalPrice.toFixed(2);
+
+        cartDiv.appendChild(clone);
+    }
 }
 
-var totalQty = 0;
-for (let i = 0; i < newCart.length; i++) {
-    var prod = newCart[i]
-    totalQty = totalQty + parseInt(prod.qty)
-    document.getElementById("cart-numitems").innerHTML = totalQty;
 
-    showProductInCart(prod);
+// Updating total price
+function updateTotalPrice() {
+    var totalPrice = 0.00;
+    for (let i = 0; i < currCart.length; i++) {
+        totalPrice += parseFloat(currCart[i].price);
+        document.getElementById("cart-total-price").innerHTML = totalPrice.toFixed(2);
+    }
 }
 
+showProductInCart()
+    // updateTotalPrice()
 
-// function removeFromCart() {
-//     let removedItem = document.getElementsByClassName("remove-btn");
-//     console.log(removedItem)
-//         // for (let i = 0; i < removedItem.length; i++) {
-//         //     let r = removedItem[i]
-//         //     r.addEventListener('click', function() {
-//         //         console.log("clicked")
-//         //     })
-//         // }
+
+// console.log(itemContainer);
+// let id = null;
+// for (let i = 0; i < currCart.length; i++) {
+//     let curItem = currCart[i]
+//         // console.log(itemContainer.querySelector('.cart-product-name'));
+//         // let sameName = curItem.name === itemContainer.querySelector('.cart-product-name').innerText;
+//     let sameQty = curItem.qty === itemContainer.querySelector('.cart-product-qty').innerText;
+//     let sameGlaze = curItem.glaze === itemContainer.querySelector('.cart-product-glaze').innerText;
+//     let samePrice = curItem.price === itemContainer.querySelector('.cart-product-price').innerText;
+//     console.log("sameQty", sameQty);
+//     console.log("curItem.qty", curItem.qty)
+//     if (sameQty && sameGlaze && samePrice) {
+//         id = i;
+//         break
+//     }
 // }
+// console.log("id", id)
+
+// const index = currCart.findIndex(function(item) {
+//     if (item.name == 'Original') {
+//         return true;
+//     }
+// })
