@@ -273,6 +273,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     font-size: 0.6em;
+    padding: 1em;
 }
 
 .cart-row img {
@@ -290,6 +291,15 @@ h1 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.cart-item-info {
+    text-align: left;
+    padding-left: 1em;
+}
+
+.cart-product-price {
+    padding-right: 1em;
 }
 
 .cart-total {
