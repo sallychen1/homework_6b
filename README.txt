@@ -7,7 +7,7 @@ New Features
 
 New Page (Shopping Cart Page)
 - Show all details of products added to the cart (or display “no items in cart message” if there are no products)
-- Enable users to add/subtract/remove items already in the cart
+- Enable users to remove items already in the cart
 - View the total price of items in the cart
 - Allow navigation back to the products page by clicking on the “keep shopping” button
 - Allow navigation to the checkout page (not implemented) by clicking on the “checkout button”
