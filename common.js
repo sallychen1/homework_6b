@@ -1,11 +1,8 @@
-// Updating number on the cart icon
+// Updating number on the cart icon for all pages
 const cartIcon = JSON.parse(localStorage.getItem('savedCart'));
 
-var totalQty = 0;
+let totalQty = 0;
 for (let i = 0; i < cartIcon.length; i++) {
-    var prod = cartIcon[i]
-    totalQty += parseInt(prod.qty);
+    totalQty += parseInt(cartIcon[i].qty);
     document.getElementById("cart-numitems").innerHTML = totalQty;
 }
-
-// console.log("cartIcon", cartIcon)

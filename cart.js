@@ -2,7 +2,8 @@ const currCart = JSON.parse(localStorage.getItem('savedCart'));
 const template = document.getElementById('cart-item-template');
 const cartDiv = document.querySelector('.cart-items');
 
-function showEmptyCart() {
+// Only show the empty cart msg when there are no items
+function showEmptyCartMsg() {
     let x = document.getElementsByClassName("cart-msg")[0];
     if (currCart.length == 0) {
         x.style.display = 'block';
@@ -11,9 +12,8 @@ function showEmptyCart() {
     }
 }
 
+// Display each product in cart in the format of templates
 function showProductInCart() {
-
-    let totalPrice = 0.00;
     for (let i = 0; i < currCart.length; i++) {
         product = currCart[i];
         const clone = template.content.cloneNode(true);
@@ -22,19 +22,23 @@ function showProductInCart() {
         clone.querySelector('.cart-product-glaze').innerText = product.glaze;
         clone.querySelector('.cart-product-price').innerText = product.price;
 
+        // Add event listener to the remove button for removing items from cart
         const removeBtn = clone.querySelector('.remove-btn');
+        let removedQty = clone.querySelector('.cart-product-qty').innerText;
+
         removeBtn.addEventListener('click', function() {
+            // Remove the item graphically & logically and updated all cart properties
             let itemContainer = this.parentNode.parentNode;
+            let cartQty = parseInt(document.getElementById("cart-numitems").innerHTML);
+            cartQty -= parseInt(removedQty);
             currCart.splice(0, 1);
             itemContainer.parentNode.removeChild(itemContainer);
-            document.getElementById("cart-numitems").innerHTML = currCart.length;
+            document.getElementById("cart-numitems").innerHTML = cartQty;
             localStorage.setItem('savedCart', JSON.stringify(currCart));
-            showEmptyCart()
+            showEmptyCartMsg()
             updateTotalPrice()
         });
 
-        // totalPrice += parseFloat(currCart[i].price);
-        // document.getElementById("cart-total-price").innerHTML = totalPrice.toFixed(2);
         updateTotalPrice()
         cartDiv.appendChild(clone);
     }
@@ -54,5 +58,4 @@ function updateTotalPrice() {
 }
 
 showProductInCart()
-showEmptyCart()
-    // updateTotalPrice()
+showEmptyCartMsg()
